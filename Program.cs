@@ -5,7 +5,7 @@ Boxeador boxeador2 = new Boxeador();
 bool salir = false;
 while(!salir)
 {
-     menu = Funciones.IngresarEntero("1. Cargar Datos Boxeador 1 | 2. Cargar Datos Boxeador 2 | 3. Pelear! | 4. Salir"); 
+     menu = Funciones.IngresarEntero("1. Cargar Datos Boxeador 1 | 2. Cargar Datos Boxeador 2 | 3. Pelear! | 4. CambiarAtributos | 5. Salir"); 
         switch(menu)
     {
         case 1:
@@ -28,6 +28,32 @@ while(!salir)
         break;
 
         case 4:
+            int num = Funciones.IngresarEntero("Que boxeador desea cambiar [1/2]: ");
+            if(num == 1)
+            {
+                if(boxeador1.Peso == 0)
+                {
+                    Console.WriteLine("Debe Inicializar primero el boxeador 1");
+                }
+                else
+                {
+                    CambiarAtributos(num);
+                }
+            }
+            else
+            {
+                if(boxeador2.Peso == 0)
+                {
+                    Console.WriteLine("Debe Inicializar primero el boxeador 2");
+                }
+                else
+                {
+                    CambiarAtributos(num);
+                }
+            } 
+        break;
+
+        case 5:
             salir = true;
         break;
    
@@ -56,6 +82,21 @@ int Validacion(string msj, string msj2)
         num = Funciones.IngresarEntero(msj2);
     }
     return num;
+}
+
+void CambiarAtributos(int num)
+{
+    
+    if(num == 1)
+    {
+        boxeador1.PotenciaGolpes = Validacion("Ingrese la potencia de los golpes: ", "Ingrese una potencia entre 1 y 100: ");
+        boxeador1.VelocidadPiernas = Validacion("Ingrese la velocidad de los golpes: ", "Ingrese una velociadad entre 1 y 100: ");
+    }
+    else
+    {
+        boxeador2.PotenciaGolpes = Validacion("Ingrese la potencia de los golpes: ", "Ingrese una potencia entre 1 y 100: ");
+        boxeador2.VelocidadPiernas = Validacion("Ingrese la velocidad de los golpes: ", "Ingrese una velociadad entre 1 y 100: ");
+    }
 }
 
 void Pelear()
